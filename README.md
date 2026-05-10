@@ -172,3 +172,19 @@ flowchart LR
 Это публичный showcase. Production-конфиг (Dockerfile, entrypoint с секретами, реальный `winning-patterns.md`) исключён. Здесь — архитектура, knowledge base, и реконструированные примеры выходов.
 
 Если ищешь как построить такого же агента под свой продукт — стартуй с [`docs/01-agent-anatomy.md`](docs/01-agent-anatomy.md).
+
+---
+
+## Связанные репозитории
+
+Часть портфолио из нескольких репозиториев вокруг FORELDR:
+
+- **[foreldr-architecture](https://github.com/Dayron089/foreldr-architecture)** — архитектура самого продукта FORELDR: 12-стадийный ELS-пайплайн, BER-память на pgvector + RRF, multi-provider LLM-роутинг с prompt caching, layered prompt engineering, схема БД с денормализацией.
+- **[openldr-architecture](https://github.com/Dayron089/openldr-architecture)** — Telegram ops-агент для FORELDR на OpenClaw + Grok 4.1 Fast: 30 Python CLI tools для мониторинга прода, cron-дайджест, авто-алерты по красным линиям.
+- **[market-ldr-showcase](https://github.com/Dayron089/market-ldr-showcase)** *(вы здесь)* — автономный AI-маркетолог для FORELDR.
+
+---
+
+## Об авторе
+
+**Dmitry Pelikh** — founder & engineer of FORELDR.
