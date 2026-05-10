@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "name": "morning-trends",
+      "enabled": true,
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 22 * * *"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Утренний анализ трендов. Найди актуальные тренды в нише AI companion/AI girlfriend на TikTok и X. Предложи 2-3 сценария по формату из CLAUDE.md. Для каждого укажи сегмент, pillar, hook, краткий скрипт. Жду подтверждения или отклонения каждого."
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "last"
+      }
+    },
+    {
+      "name": "weekly-review",
+      "enabled": true,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 23 * * 0"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Еженедельный обзор. Прочитай memory/winning-patterns.md и memory/rejected.md. Подведи итоги: сколько сценариев предложено, одобрено, отклонено за неделю. Какие сегменты и pillars работают лучше. Рекомендации на следующую неделю. Обнови MEMORY.md."
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "last"
+      }
+    }
+  ]
+}

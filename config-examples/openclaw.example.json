@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.3.2"
+  },
+  "agents": {
+    "defaults": {
+      "compaction": { "mode": "safeguard" },
+      "maxConcurrent": 4,
+      "subagents": { "maxConcurrent": 8 },
+      "model": {
+        "primary": "xai/grok-4-1-fast-non-reasoning"
+      },
+      "models": {
+        "xai/grok-4-1-fast-non-reasoning": {
+          "params": { "temperature": 0.3 }
+        }
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "name": "main",
+        "workspace": "/path/to/workspace",
+        "agentDir": "/path/to/agentDir"
+      }
+    ]
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "allowlist",
+      "botToken": "${TELEGRAM_BOT_TOKEN}",
+      "groupPolicy": "allowlist",
+      "streaming": "partial",
+      "allowFrom": ["${ADMIN_USER_ID}"]
+    }
+  },
+  "models": {
+    "providers": {
+      "xai": {
+        "baseUrl": "https://api.x.ai/v1",
+        "apiKey": "${XAI_API_KEY}",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "grok-4-1-fast-non-reasoning",
+            "name": "Grok 4.1 Fast",
+            "input": ["text"],
+            "contextWindow": 131072,
+            "maxTokens": 16384
+          }
+        ]
+      },
+      "openai": {
+        "baseUrl": "https://api.openai.com/v1",
+        "apiKey": "${OPENAI_API_KEY}",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "text-embedding-3-small",
+            "name": "Text Embedding 3 Small",
+            "input": ["text"],
+            "contextWindow": 8191,
+            "maxTokens": 8191
+          }
+        ]
+      }
+    }
+  },
+  "tools": {
+    "web": {
+      "search": {
+        "apiKey": "${WEB_SEARCH_API_KEY}"
+      }
+    }
+  },
+  "plugins": {
+    "entries": {
+      "telegram": { "enabled": true }
+    }
+  }
+}

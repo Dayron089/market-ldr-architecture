@@ -1,0 +1,48 @@
+flowchart LR
+    CRON["Cron 22:30<br/>morning-trends"]
+
+    subgraph SCRAPE["Step 1: Reddit pain mining"]
+        R1["r/Replika<br/>Segment A"]
+        R2["r/CharacterAI<br/>Segment B"]
+        R3["r/LongDistance<br/>Segment C"]
+        R4["r/socialanxiety<br/>Segment D"]
+        R5["r/CandyAI<br/>Segment E"]
+        R6["r/lonely<br/>Segment F"]
+    end
+
+    subgraph TRENDS["Step 2: Trend research"]
+        TT["TikTok niche search"]
+        WEB["Web search<br/>'AI girlfriend trend'"]
+    end
+
+    subgraph GEN["Step 3: Scenario generation"]
+        MAP["Map pain → 6 segments<br/>+ 3 pillars"]
+        LAWS["Apply 48 laws<br/>(hook, format, CTA)"]
+        WIN_CHECK["Check<br/>winning-patterns.md<br/>что зашло"]
+    end
+
+    TG["Step 4: Telegram delivery<br/>'Доброе утро! Вот 2-3 сценария:'"]
+
+    APPROVE{"Дима:<br/>да / нет?"}
+
+    subgraph PERSIST["Step 5: Persistence"]
+        WIN_W["winning-patterns.md<br/>+ entry"]
+        REJ["rejected.md<br/>+ entry"]
+        PUSH["git push<br/>market-ldr-data"]
+    end
+
+    CRON --> SCRAPE
+    CRON --> TRENDS
+    SCRAPE --> GEN
+    TRENDS --> GEN
+    GEN --> TG
+    TG --> APPROVE
+    APPROVE -->|да| WIN_W
+    APPROVE -->|нет| REJ
+    WIN_W --> PUSH
+    REJ --> PUSH
+
+    style CRON fill:#e3f2fd
+    style TG fill:#fff3e0
+    style APPROVE fill:#fce4ec
+    style PERSIST fill:#e8f5e9

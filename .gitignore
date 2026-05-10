@@ -1,0 +1,14 @@
+.env
+.env.*
+*.log
+.DS_Store
+node_modules/
+__pycache__/
+*.pyc
+.idea/
+.vscode/
+
+# Bot persistent data (private)
+memory/winning-patterns.md
+memory/rejected.md
+memory/2026-*.md

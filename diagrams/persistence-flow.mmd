@@ -1,0 +1,31 @@
+sequenceDiagram
+    participant RAIL as Railway
+    participant DOCKER as Docker container
+    participant OC as openclaw agent
+    participant GIT as git branch<br/>market-ldr-data
+    participant TG as Telegram
+
+    Note over RAIL,GIT: Container start
+    RAIL->>DOCKER: spin up
+    DOCKER->>GIT: git fetch market-ldr-data
+    GIT-->>DOCKER: memory/ + MEMORY.md
+    DOCKER->>OC: start gateway
+    OC-->>TG: ready, idle
+
+    Note over OC,TG: Working session
+    TG->>OC: "сделай сценарий S18"
+    OC->>OC: read knowledge base + memory
+    OC-->>TG: scenario output
+    TG->>OC: "да, одобрен"
+    OC->>OC: write memory/winning-patterns.md
+    OC-->>TG: записан, готов к след
+
+    Note over RAIL,GIT: Deploy / restart
+    RAIL->>DOCKER: SIGTERM (deploy main)
+    DOCKER->>OC: trap SIGTERM
+    OC->>GIT: git add memory/ MEMORY.md
+    OC->>GIT: git commit + push
+    GIT-->>OC: ok
+    DOCKER->>RAIL: graceful shutdown
+
+    Note over RAIL,GIT: New container starts → memory restored

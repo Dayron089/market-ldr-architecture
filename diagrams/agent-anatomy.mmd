@@ -1,0 +1,33 @@
+flowchart TB
+    subgraph IM["IMMUTABLE (правит человек)"]
+        SP["CLAUDE.md<br/>system prompt"]
+        ID["IDENTITY.md / SOUL.md<br/>vibe + границы"]
+        KB["Knowledge Base<br/>14 .md файлов:<br/>48-LAWS, AUDIENCE,<br/>SCENARIOS, STRATEGY,<br/>FUNNEL, ..."]
+    end
+
+    subgraph MU["MUTABLE (бот пишет сам)"]
+        MEM["MEMORY.md<br/>distilled insights"]
+        WIN["memory/winning-patterns.md<br/>одобренные сценарии"]
+        REJ["memory/rejected.md<br/>отклонённые идеи"]
+        HB["HEARTBEAT.md<br/>что проверять при старте"]
+    end
+
+    subgraph EXT["External Tools"]
+        REDDIT["Reddit / Web search"]
+        GROK["xAI Grok 4.1 Fast<br/>96% cache hit rate"]
+    end
+
+    AGENT["openclaw agent<br/>main turn"]
+
+    IM -.read.-> AGENT
+    MU <-.read+write.-> AGENT
+    AGENT --> GROK
+    AGENT --> REDDIT
+    MU -.git push on SIGTERM.-> GIT[("git branch:<br/>market-ldr-data")]
+    GIT -.git pull on start.-> MU
+
+    style IM fill:#e8f4f8,stroke:#0288d1
+    style MU fill:#fff4e6,stroke:#f57c00
+    style EXT fill:#f3e5f5,stroke:#8e24aa
+    style AGENT fill:#e8f5e9,stroke:#388e3c
+    style GIT fill:#ffebee,stroke:#c62828
