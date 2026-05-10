@@ -2,7 +2,7 @@
 
 > Полный playbook производства TikTok контента для FORELDR — AI companion app.
 > Ролики генерируются через AI UGC инструменты (Higgsfield, Soru, OVL 3.1).
-> Распространение через 100+ аккаунтов. Сценарии — через Telegram Marketing Agent на Claude.
+> Распространение через 100+ аккаунтов. Сценарии — через Telegram Marketing Agent на Grok 4.1 Fast (xAI Direct).
 
 ---
 
@@ -256,7 +256,7 @@
 |--------|-----------|-----------|
 | AI UGC tools (Higgsfield/Soru) | $50-100/мес | Зависит от объёма |
 | TikTok Spark Ads (testing) | $500-1000/мес | $30-50 per concept test |
-| Marketing Agent | $0 | Claude Max подписка |
+| Marketing Agent | ~$8-12/мес | xAI Grok 4.1 Fast + Railway hosting |
 | Distribution accounts | $0 (organic) | Manual setup |
 | **Итого Phase 1** | **$550-1100/мес** | |
 
